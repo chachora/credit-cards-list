@@ -11,6 +11,6 @@ router.get('/', controller.getAll);
 /**
  * Add credit card
  */
-router.post('/', controller.add);
+router.post('/', controller.create);
 
 module.exports = router;
