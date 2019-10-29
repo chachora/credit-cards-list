@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './InputField.css';
 
 const InputField = ({ id, label, type }) => {
   return (
-    <div>
+    <div className={styles.container}>
       <label htmlFor={id}>{label}</label>
       <input type={type} id={id} />
     </div>
