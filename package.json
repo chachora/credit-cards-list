@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start-api": "node ./api/bin/www",
-    "start-web": "webpack-dev-server"
+    "start-web": "webpack-dev-server --config ./web/webpack.config.js"
   },
   "eslintConfig": {
     "parserOptions": {

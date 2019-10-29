@@ -3,17 +3,17 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
-  template: 'public/index.html',
+  template: 'web/public/index.html',
 });
 
 module.exports = {
   mode: 'development',
-  context: path.join(__dirname, 'web'),
+  // context: path.join(__dirname, 'web'),
   entry: [
     'core-js/stable',
     'regenerator-runtime/runtime',
     'whatwg-fetch',
-    './index.jsx',
+    './web/index.jsx',
   ],
   devtool: 'eval-source-map',
   module: {
@@ -31,12 +31,12 @@ module.exports = {
   },
   resolve: { extensions: ['*', '.js', '.jsx'] },
   output: {
-    path: path.join(__dirname, 'web/dist'),
+    path: path.join(__dirname, 'dist'),
     publicPath: '/',
     filename: '[hash].js',
   },
   devServer: {
-    contentBase: path.join(__dirname, 'web/public/'),
+    contentBase: path.join(__dirname, 'public/'),
     port: 3000,
     publicPath: 'http://localhost:3000/',
     hotOnly: true,
