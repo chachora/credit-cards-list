@@ -1,24 +1,25 @@
 import React from 'react';
+import styles from './CardsList.css';
 
 const CardsList = () => {
   return (
     <div>
       <h4>Existing Cards</h4>
-      <table border={1} cellPadding={8}>
+      <table className={styles.table}>
         <thead>
           <tr bgcolor="#d3d3d3">
-            <th>Name</th>
-            <th>Card Number</th>
-            <th>Balance</th>
-            <th>Limit</th>
+            <th className={styles.cell}>Name</th>
+            <th className={styles.cell}>Card Number</th>
+            <th className={styles.cell}>Balance</th>
+            <th className={styles.cell}>Limit</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Alice</td>
-            <td>1111 2222 3333 4444</td>
-            <td>£10.24</td>
-            <td>£5000</td>
+            <td className={styles.cell}>Alice</td>
+            <td className={styles.cell}>1111 2222 3333 4444</td>
+            <td className={styles.cell}>£10.24</td>
+            <td className={styles.cell}>£5000</td>
           </tr>
         </tbody>
       </table>
