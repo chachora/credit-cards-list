@@ -1,7 +1,15 @@
 import React from 'react';
+import CardsList from './components/CardsList';
+import AddCardForm from './components/AddCardForm';
 
 const App = () => {
-  return <div>This is the beginning</div>;
+  return (
+    <>
+      <h2>Credit Card System</h2>
+      <AddCardForm />
+      <CardsList />
+    </>
+  );
 };
 
 export default App;
