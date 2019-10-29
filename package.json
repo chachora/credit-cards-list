@@ -5,7 +5,8 @@
   "author": "Yuriy Chachora <chachora@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node ./api/bin/www"
+    "start-api": "node ./api/bin/www",
+    "start-web": "webpack-dev-server"
   },
   "eslintConfig": {
     "parserOptions": {
@@ -36,15 +37,30 @@
     "trailingComma": "es5",
     "singleQuote": true
   },
+  "babel": {
+    "presets": [
+      "@babel/env",
+      "@babel/preset-react"
+    ]
+  },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "core-js": "^3.3.5",
+    "css-loader": "^3.2.0",
     "eslint": "^6.5.1",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.4.0",
@@ -52,6 +68,13 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
-    "prettier": "1.18.2"
+    "html-webpack-plugin": "^3.2.0",
+    "prettier": "1.18.2",
+    "regenerator-runtime": "^0.13.3",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.9.0",
+    "whatwg-fetch": "^3.0.0"
   }
 }
