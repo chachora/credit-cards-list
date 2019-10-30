@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import CardsList from './components/CardsList';
 import AddCardForm from './components/AddCardForm';
 import api from './api/credit-card';
@@ -8,17 +8,30 @@ const App = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await api.getCreditCards();
-      setCards(result);
+      try {
+        const result = await api.getCreditCards();
+        setCards(result);
+      } catch (e) {
+        alert('Cannot fetch credit cards');
+      }
     };
 
     fetchData();
   }, []);
 
+  const handleCardSubmit = useCallback(async creditCard => {
+    try {
+      const newCreditCard = await api.addCreditCard(creditCard);
+      setCards([...cards, newCreditCard]);
+    } catch (e) {
+      alert('Cannot add credit card');
+    }
+  }, []);
+
   return (
     <>
       <h2>Credit Card System</h2>
-      <AddCardForm />
+      <AddCardForm onSubmit={handleCardSubmit} />
       <CardsList cards={cards} />
     </>
   );
