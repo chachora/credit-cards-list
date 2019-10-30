@@ -8,9 +8,12 @@ const creditCards = [
   },
 ];
 
-const create = ({ number }) => {
+const create = ({ name, number, limit }) => {
   const creditCard = {
+    name,
     number,
+    limit,
+    balance: 0,
   };
   creditCards.push(creditCard);
   return creditCard;
