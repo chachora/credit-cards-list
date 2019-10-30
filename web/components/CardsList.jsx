@@ -1,19 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import api from '../api/credit-card';
+import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './CardsList.css';
 
-const CardsList = () => {
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await api.getCreditCards();
-      console.log(result);
-      setCards(result);
-    };
-    fetchData();
-  }, []);
-
+const CardsList = ({ cards }) => {
   return (
     <div>
       <h4>Existing Cards</h4>
@@ -39,6 +28,10 @@ const CardsList = () => {
       </table>
     </div>
   );
+};
+
+CardsList.propTypes = {
+  cards: PropTypes.array.isRequired,
 };
 
 export default CardsList;
