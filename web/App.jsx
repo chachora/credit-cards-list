@@ -19,14 +19,17 @@ const App = () => {
     fetchData();
   }, []);
 
-  const handleCardSubmit = useCallback(async creditCard => {
-    try {
-      const newCreditCard = await api.addCreditCard(creditCard);
-      setCards([...cards, newCreditCard]);
-    } catch (e) {
-      alert('Cannot add credit card');
-    }
-  }, []);
+  const handleCardSubmit = useCallback(
+    async creditCard => {
+      try {
+        const newCreditCard = await api.addCreditCard(creditCard);
+        setCards([...cards, newCreditCard]);
+      } catch (e) {
+        alert('Cannot add credit card');
+      }
+    },
+    [cards]
+  );
 
   return (
     <>

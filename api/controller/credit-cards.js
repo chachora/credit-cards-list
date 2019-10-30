@@ -5,9 +5,7 @@ const getAll = (req, res) => {
 };
 
 const create = (req, res) => {
-  const data = req.body;
-  const creditCard = CreditCard.create(data);
-  res.json(creditCard);
+  res.json(CreditCard.create(req.body));
 };
 
 module.exports = Object.freeze({

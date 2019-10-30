@@ -1,11 +1,14 @@
 const API_URL = 'http://localhost:3001/credit-cards';
 
 const addCreditCard = async creditCard => {
-  const result = await fetch(API_URL, {
+  const response = await fetch(API_URL, {
     method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify(creditCard),
   });
-  return result;
+  return response.json();
 };
 
 const getCreditCards = async () => {
@@ -15,7 +18,7 @@ const getCreditCards = async () => {
   return response.json();
 };
 
-export default {
+export default Object.freeze({
   addCreditCard,
   getCreditCards,
-};
+});
