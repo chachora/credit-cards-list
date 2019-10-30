@@ -4,9 +4,9 @@ import InputField from './InputField';
 
 const AddCardForm = ({ onSubmit }) => {
   const [card, setCard] = useState({
-    name: 'Alice',
-    number: '12345',
-    limit: 1000,
+    name: '',
+    number: '',
+    limit: '',
   });
 
   const handleFieldChange = useCallback(
