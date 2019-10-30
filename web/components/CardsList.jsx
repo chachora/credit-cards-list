@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import api from '../api/credit-card';
 import styles from './CardsList.css';
 
 const CardsList = () => {
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await api.getCreditCards();
+      console.log(result);
+      setCards(result);
+    };
+    fetchData();
+  }, []);
+
   return (
     <div>
       <h4>Existing Cards</h4>
@@ -15,12 +27,14 @@ const CardsList = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className={styles.cell}>Alice</td>
-            <td className={styles.cell}>1111 2222 3333 4444</td>
-            <td className={styles.cell}>£10.24</td>
-            <td className={styles.cell}>£5000</td>
-          </tr>
+          {cards.map(card => (
+            <tr key={card.number}>
+              <td className={styles.cell}>{card.name}</td>
+              <td className={styles.cell}>{card.number}</td>
+              <td className={styles.cell}>{`£${card.balance}`}</td>
+              <td className={styles.cell}>{`£${card.limit}`}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

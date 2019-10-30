@@ -1,7 +1,10 @@
 // Default credit cards
 const creditCards = [
   {
-    number: 999,
+    name: 'Alice',
+    number: '1111222233334444',
+    balance: 100,
+    limit: 5000,
   },
 ];
 
