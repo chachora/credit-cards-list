@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import InputField from './InputField';
 
-const AddCardForm = ({ onSubmit }) => {
+const AddCardForm = ({ errors, onSubmit }) => {
   const [card, setCard] = useState({
     name: '',
     number: '',
@@ -26,18 +26,21 @@ const AddCardForm = ({ onSubmit }) => {
           label="Name"
           id="name"
           value={card.name}
+          error={errors.name}
           onChange={handleFieldChange}
         />
         <InputField
           label="Card number"
           id="number"
           value={card.number}
+          error={errors.number}
           onChange={handleFieldChange}
         />
         <InputField
           label="Limit"
           id="limit"
           value={card.limit}
+          error={errors.limit}
           onChange={handleFieldChange}
         />
       </form>

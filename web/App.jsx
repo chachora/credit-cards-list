@@ -5,6 +5,7 @@ import api from './api/credit-card';
 
 const App = () => {
   const [cards, setCards] = useState([]);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +26,9 @@ const App = () => {
         const newCreditCard = await api.addCreditCard(creditCard);
         setCards([...cards, newCreditCard]);
       } catch (e) {
-        alert('Cannot add credit card');
+        if (e.validations) {
+          setErrors(e.validations);
+        } else alert(e.message);
       }
     },
     [cards]
@@ -34,7 +37,7 @@ const App = () => {
   return (
     <>
       <h2>Credit Card System</h2>
-      <AddCardForm onSubmit={handleCardSubmit} />
+      <AddCardForm errors={errors} onSubmit={handleCardSubmit} />
       <CardsList cards={cards} />
     </>
   );
