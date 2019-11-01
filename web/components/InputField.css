@@ -1,6 +1,28 @@
 .container {
+    position: relative;
     display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     max-width: 20rem;
+}
+
+.container>input {
+    border: 1px solid black;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+.container.error {
+    color: red;
+}
+
+.container.error>input {
+    border-color: red;
+}
+
+.errorMessage {
+    position: absolute;
+    bottom: 0;
+    font-size: 0.75rem;
+    transform: translateY(100%);
 }

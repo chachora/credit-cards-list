@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import styles from './InputField.css';
 
-const InputField = ({ id, label, type, value, onChange }) => {
+const InputField = ({ id, error, label, type, value, onChange }) => {
   return (
-    <div className={styles.container}>
+    <div className={classNames(styles.container, { [styles.error]: error })}>
       <label htmlFor={id}>{label}</label>
       <input type={type} id={id} value={value} onChange={onChange} />
+      <span className={styles.errorMessage}>{error}</span>
     </div>
   );
 };
