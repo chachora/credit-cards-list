@@ -15,9 +15,11 @@ const InputField = ({ id, error, label, type, value, onChange }) => {
 
 InputField.defaultProps = {
   type: 'text',
+  error: null,
 };
 
 InputField.propTypes = {
+  error: PropTypes.string,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   type: PropTypes.string,
