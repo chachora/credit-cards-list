@@ -8,13 +8,27 @@ const addCreditCard = async creditCard => {
     },
     body: JSON.stringify(creditCard),
   });
-  return response.json();
+
+  const data = await response.json();
+  if (response.status >= 200 && response.status < 399) return data;
+
+  // Handle errors
+  if (data && data.errors) {
+    const error = new Error();
+    error.validations = {};
+    data.errors.reduce(
+      (result, item) => (result[item.path[0]] = item.message),
+      error.validations
+    );
+    throw error;
+  } else throw new Error('Cannot add card');
 };
 
 const getCreditCards = async () => {
   const response = await fetch(API_URL, {
     method: 'get',
   });
+
   return response.json();
 };
 
