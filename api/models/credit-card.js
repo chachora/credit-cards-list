@@ -8,6 +8,13 @@ const creditCards = [
   },
 ];
 
+/**
+ * Create credit card
+ * @param name
+ * @param number
+ * @param limit
+ * @returns {{number: *, balance: number, name: *, limit: *}}
+ */
 const create = ({ name, number, limit }) => {
   const creditCard = {
     name,
@@ -15,10 +22,15 @@ const create = ({ name, number, limit }) => {
     limit,
     balance: 0,
   };
+
   creditCards.push(creditCard);
   return creditCard;
 };
 
+/**
+ * Get all credit cards
+ * @returns {{number: string, balance: number, name: string, limit: number}[]}
+ */
 const getAll = () => {
   return creditCards;
 };
