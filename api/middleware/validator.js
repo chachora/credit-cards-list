@@ -3,7 +3,7 @@ const validator = schema => (req, res, next) => {
 
   if (error) {
     res.status(422).json({
-      error: error.details.map(err => ({
+      errors: error.details.map(err => ({
         message: err.message,
         path: err.path,
       })),
