@@ -1,22 +1,13 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import InputField from './InputField';
 
-const AddCardForm = ({ errors, onSubmit }) => {
-  const [card, setCard] = useState({
-    name: '',
-    number: '',
-    limit: '',
-  });
-
-  const handleFieldChange = useCallback(
-    event => setCard({ ...card, [event.target.id]: event.target.value }),
-    [card]
-  );
+const AddCardForm = ({ card, errors, onChange, onSubmit }) => {
+  const handleFieldChange = useCallback(event => onChange(event), [onChange]);
 
   const handleSubmit = useCallback(() => {
-    onSubmit(card);
-  }, [card, onSubmit]);
+    onSubmit();
+  }, [onSubmit]);
 
   return (
     <div>
@@ -52,6 +43,9 @@ const AddCardForm = ({ errors, onSubmit }) => {
 };
 
 AddCardForm.propTypes = {
+  card: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
